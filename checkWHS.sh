@@ -6,7 +6,7 @@ hashFile="/home/pi/webhostingCheck/temp/WHS-hash.txt"
 oldHash=$(cat "$hashFile")
 
 #cache html file
-curl -s http://www.webhostingstatus.com/ -o temp/FH-cache.html
+curl -s http://www.webhostingstatus.com/ -o temp/WHS-cache.html
 #hash the cache
 newHash=$(md5sum temp/WHS-cache.html)
 
