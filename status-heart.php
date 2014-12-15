@@ -1,5 +1,5 @@
 <?php
-include '/home/pi/webhostingCheck/html-lib/simple_html_dom.php';
+include __DIR__ . '/html-lib/simple_html_dom.php';
 
 // ini_set('display_startup_errors',1);
 // ini_set('display_errors',1);
@@ -13,7 +13,7 @@ $data = ":traffic_light:";
 // WEB HOSTING STATUS - HEART
 // -------------------
 
-$html = file_get_html('/home/pi/webhostingCheck/temp/WHS-cache.html');
+$html = file_get_html(__DIR__ . '/temp/WHS-cache.html');
 if ($html === false) {
     $html->clear();
     unset($html);

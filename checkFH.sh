@@ -1,17 +1,17 @@
 #make sure you put a webook token in token.txt
-token=$(cat token.txt)
+token=$(cat webhostingCheck/token.txt)
 
 #load old hash
-hashFile="/home/pi/webhostingCheck/temp/FH-hash.txt"
+hashFile="webhostingCheck/temp/FH-hash.txt"
 oldHash=$(cat "$hashFile")
 
 #cache html file
-curl -s http://status.fasthosts.co.uk/ -o temp/FH-cache.html
+curl -s http://status.fasthosts.co.uk/ -o webhostingCheck/temp/FH-cache.html
 #hash the cache
-newHash=$(md5sum temp/FH-cache.html)
+newHash=$(md5sum webhostingCheck/temp/FH-cache.html)
 
 #work out the status [red, orange, green] in emoji
-status=$(php /home/pi/webhostingCheck/status-fasthosts.php)
+status=$(php webhostingCheck/status-fasthosts.php)
 
 #save new hash to file
 echo "$newHash" > "$hashFile"

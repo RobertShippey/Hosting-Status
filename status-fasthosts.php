@@ -1,5 +1,5 @@
 <?php
-include 'html-lib/simple_html_dom.php';
+include __DIR__ . 'html-lib/simple_html_dom.php';
 
 set_time_limit(0);
 

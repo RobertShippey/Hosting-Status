@@ -1,12 +1,12 @@
 #make sure you put a webook token in token.txt
-token=$(cat token.txt)
+token=$(cat webhostingCheck/token.txt)
 
 #load old hash
 hashFile="/home/pi/webhostingCheck/temp/WHS-hash.txt"
 oldHash=$(cat "$hashFile")
 
 #cache html file
-curl -s http://www.webhostingstatus.com/ -o temp/WHS-cache.html
+curl -s http://www.webhostingstatus.com/ -o webhostingCheck/temp/WHS-cache.html
 #hash the cache
 newHash=$(md5sum temp/WHS-cache.html)
 
