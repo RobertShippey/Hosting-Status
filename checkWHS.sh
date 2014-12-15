@@ -8,10 +8,10 @@ oldHash=$(cat "$hashFile")
 #cache html file
 curl -s http://www.webhostingstatus.com/ -o webhostingCheck/temp/WHS-cache.html
 #hash the cache
-newHash=$(md5sum temp/WHS-cache.html)
+newHash=$(md5sum webhostingCheck/temp/WHS-cache.html)
 
 #work out the status [red, orange, green] in emoji
-status=$(php /home/pi/webhostingCheck/status-heart.php)
+status=$(php webhostingCheck/status-heart.php)
 
 #save new hash to file
 echo "$newHash" > "$hashFile"
