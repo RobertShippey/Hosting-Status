@@ -47,22 +47,21 @@ $system['fields'] = $fields;
 $attachments[] = $system;
 
 
-//foreach ($data->incidents as $incident) {
-//	if ($incident->status !== "completed" && $incident->status !== "resolved") {
-//		$level = $language[$incident->impact];
-//		$I_message = $incident->name . ": " . $incident->impact . " " . $level['emoji'];
-//
-//		$attachments[] = array ('fallback' => $I_message,
-//			'color' => $level['colour'],
-//			'text' => $I_message,
-//			"title_link" => $incident->shortlink,
-//			"title" => $I_message,
-//		//	"text" => $incident->incident_updates[0]->body
-//			);
-//	}
-//}
+foreach ($data->incidents as $incident) {
+	if ($incident->status !== "completed" && $incident->status !== "resolved") {
+		$level = $language[$incident->impact];
+		$I_message = $incident->name . ": " . $incident->impact . " " . $level['emoji'];
 
-$token = file_get_contents('/home/pi/webhostingCheck/token.txt');
+		$attachments[] = array ('fallback' => $I_message,
+			'color' => $level['colour'],
+			"title_link" => $incident->shortlink,
+			"title" => $I_message,
+			"text" => $incident->incident_updates[0]->body
+			);
+	}
+}
+
+$token = trim(file_get_contents('/home/pi/webhostingCheck/token.txt'));
 
 $message = array("channel" => "#hosting", "icon_url" => "https://graph.facebook.com/133198276711959/picture?height=600&width=600");
 $message['attachments'] = $attachments;
