@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(-1);
+
 $language = array("major" => 
 	array("emoji" => ":bangbang:", 
 		"colour" => "danger",
@@ -43,21 +47,22 @@ $system['fields'] = $fields;
 $attachments[] = $system;
 
 
-foreach ($data->incidents as $incident) {
-	if ($incident->status !== "completed" && $incident->status !== "resolved") {
-		$level = $language[$incident->impact];
-		$I_message = $incident->name . ": " . $incident->impact . " " . $level['emoji'];
+//foreach ($data->incidents as $incident) {
+//	if ($incident->status !== "completed" && $incident->status !== "resolved") {
+//		$level = $language[$incident->impact];
+//		$I_message = $incident->name . ": " . $incident->impact . " " . $level['emoji'];
+//
+//		$attachments[] = array ('fallback' => $I_message,
+//			'color' => $level['colour'],
+//			'text' => $I_message,
+//			"title_link" => $incident->shortlink,
+//			"title" => $I_message,
+//		//	"text" => $incident->incident_updates[0]->body
+//			);
+//	}
+//}
 
-		$attachments[] = array ('fallback' => $I_message,
-			'color' => $level['colour'],
-			'text' => $I_message,
-			"title_link" => $incident->shortlink,
-			"title" => $I_message,
-			"text" => $incident->incident_updates[0]->body);
-	}
-}
-
-$token = file_get_contents('token.txt');
+$token = file_get_contents('/home/pi/webhostingCheck/token.txt');
 
 $message = array("channel" => "#hosting", "icon_url" => "https://graph.facebook.com/133198276711959/picture?height=600&width=600");
 $message['attachments'] = $attachments;
@@ -74,4 +79,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return the output in string f
 $output = curl_exec($ch); // execute        
 curl_close($ch); // close curl handle
 
+echo $output;
 
+?>
