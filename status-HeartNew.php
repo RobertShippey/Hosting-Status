@@ -16,10 +16,18 @@ $language = array("major" =>
 	array("emoji" => ":warning:", 
 		"colour" => "warning",
 		"text" => "Degraded Performance"),
+	"partial_outage" => 
+	array("emoji" => ":warning:", 
+		"colour" => "warning",
+		"text" => "Partial Outage"),
 	"operational" => 
 	array("emoji" => ":white_check_mark:",
 		"colour" => "good",
-		"text" => "Operational"));
+		"text" => "Operational"),
+	"none" => 
+	array("emoji" => ":bulb:",
+		"colour" => "good",
+		"text" => ""));
 
 
 $attachments = array();
@@ -50,7 +58,7 @@ $attachments[] = $system;
 foreach ($data->incidents as $incident) {
 	if ($incident->status !== "completed" && $incident->status !== "resolved") {
 		$level = $language[$incident->impact];
-		$I_message = $incident->name . ": " . $incident->impact . " " . $level['emoji'];
+		$I_message = $incident->name . " - Impact: " . $incident->impact . " " . $level['emoji'];
 
 		$attachments[] = array ('fallback' => $I_message,
 			'color' => $level['colour'],
