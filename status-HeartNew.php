@@ -16,6 +16,10 @@ $language = array("major" =>
 	array("emoji" => ":warning:", 
 		"colour" => "warning",
 		"text" => "Degraded Performance"),
+	"minor" => 
+	array("emoji" => ":warning:", 
+		"colour" => "warning",
+		"text" => "Minor"),
 	"partial_outage" => 
 	array("emoji" => ":warning:", 
 		"colour" => "warning",
