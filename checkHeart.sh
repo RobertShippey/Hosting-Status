@@ -1,16 +1,16 @@
 #make sure you put a webook token in token.txt
-token=$(cat webhostingCheck/token.txt)
+token=$(cat /home/pi/webhostingCheck/token.txt)
 
 #load old hash
 hashFile="/home/pi/webhostingCheck/temp/HeartStatus-hash.txt"
 oldHash=$(cat "$hashFile")
 
 #cache html file
-curl -s http://status.heartinternet.uk/index.json -o webhostingCheck/temp/HeartStatus-cache.json
+curl -s http://www.heartstatus.uk/index.json -o /home/pi/webhostingCheck/temp/HeartStatus-cache.json
 # http://heartstatus.uk
 
 #hash the cache
-newHash=$(md5sum webhostingCheck/temp/HeartStatus-cache.json)
+newHash=$(md5sum /home/pi/webhostingCheck/temp/HeartStatus-cache.json)
 
 #work out the status [red, orange, green] in emoji
 #status=$(php webhostingCheck/status-heart.php)
